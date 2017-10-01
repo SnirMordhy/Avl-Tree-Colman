@@ -1,9 +1,11 @@
+import java.util.Queue;
+
 /**
  * Created by benya on 20/09/2017.
  */
 public class AVLTree {
 
-    public AVLTreeNode treeRoot;
+    public Node treeRoot;
 
     public AVLTree()
     {
@@ -13,12 +15,12 @@ public class AVLTree {
     public void Insert(int key)
     {
         if (this.treeRoot == null)
-            this.treeRoot = new AVLTreeNode(key);
+            this.treeRoot = new Node(key);
         else
-            this.InsertNode(this.treeRoot, new AVLTreeNode(key));
+            this.InsertNode(this.treeRoot, new Node(key));
     }
 
-    private AVLTreeNode InsertNode(AVLTreeNode RootNode, AVLTreeNode NewNode)
+    private Node InsertNode(Node RootNode, Node NewNode)
     {
         if (RootNode == null){
             RootNode = NewNode;
@@ -56,9 +58,9 @@ public class AVLTree {
         return RootNode;
     }
 
-    private static AVLTreeNode RotateLeft(AVLTreeNode ToRot)
+    private static Node RotateLeft(Node ToRot)
     {
-        AVLTreeNode ToRot2 = ToRot.left;
+        Node ToRot2 = ToRot.left;
         ToRot.left = ToRot2.right;
         ToRot2.right = ToRot;
         ToRot.height = Math.max(ToRot.left == null ? 0 : ToRot.left.CalcHeight(), ToRot.right == null ? 0 : ToRot.right.CalcHeight()) + 1;
@@ -66,9 +68,9 @@ public class AVLTree {
         return ToRot2;
     }
 
-    private static AVLTreeNode RotateRight(AVLTreeNode ToRot)
+    private static Node RotateRight(Node ToRot)
     {
-        AVLTreeNode ToRot2 = ToRot.right;
+        Node ToRot2 = ToRot.right;
         ToRot.right = ToRot2.left;
         ToRot2.left = ToRot;
         ToRot.height = Math.max(ToRot.left == null ? 0 : ToRot.left.CalcHeight(), ToRot.right == null ? 0 : ToRot.right.CalcHeight()) + 1;
@@ -76,13 +78,13 @@ public class AVLTree {
         return ToRot2;
     }
 
-    private static AVLTreeNode DoubleRotateLeft(AVLTreeNode ToRot)
+    private static Node DoubleRotateLeft(Node ToRot)
     {
         ToRot.left = RotateRight(ToRot.left);
         return RotateLeft(ToRot);
     }
 
-    private static AVLTreeNode DoubleRotateRight(AVLTreeNode ToRot)
+    private static Node DoubleRotateRight(Node ToRot)
     {
         ToRot.right = RotateLeft(ToRot.right);
         return RotateRight(ToRot);
@@ -103,7 +105,7 @@ public class AVLTree {
         return pPrintPostorder(this.treeRoot);
     }
 
-    private String pPrintInorder(AVLTreeNode Node)
+    private String pPrintInorder(Node Node)
     {
         String strPrint = "";
         if (Node == null)
@@ -118,7 +120,7 @@ public class AVLTree {
         return strPrint;
     }
 
-    private String pPrintPreorder(AVLTreeNode Node)
+    private String pPrintPreorder(Node Node)
     {
         String strPrint = "";
         if (Node == null)
@@ -133,7 +135,7 @@ public class AVLTree {
         return strPrint;
     }
 
-    private String pPrintPostorder(AVLTreeNode Node)
+    private String pPrintPostorder(Node Node)
     {
         String strPrint = "";
         if (Node == null)
@@ -146,5 +148,17 @@ public class AVLTree {
         strPrint += Node.key;
 
         return strPrint;
+    }
+
+    public void PrintTreeLevels() {
+        Node currNode = this.treeRoot;
+
+
+
+        //    TODO: enqueue : key
+        //    TODO: enqueue : parent
+        //    TODO: enqueue : left
+        //    TODO: enqueue : right
+        //    TODO: dequeue - 4 times
     }
 }

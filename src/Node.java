@@ -1,14 +1,14 @@
 /**
  * Created by benya on 20/09/2017.
  */
-public class AVLTreeNode {
+public class Node {
     public int key;
     public int height;
-    public AVLTreeNode parent;
-    public AVLTreeNode right;
-    public AVLTreeNode left;
+    public Node parent;
+    public Node right;
+    public Node left;
 
-    public AVLTreeNode(int key)
+    public Node(int key)
     {
         this.key = key;
     }
