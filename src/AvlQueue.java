@@ -1,4 +1,7 @@
+import sun.java2d.pipe.AAShapePipe;
 import sun.misc.Queue;
+
+import java.util.OptionalInt;
 
 public class AvlQueue extends Queue {
 
@@ -42,5 +45,21 @@ public class AvlQueue extends Queue {
         if (this.front == null)
             this.rear = null;
         return temp;
+    }
+
+    public void PrintAvlQueue()
+    {
+        QueueNode queueNode = this.dequeue();
+        System.out.print("{");
+
+        while (queueNode != null) {
+            System.out.print(queueNode.value);
+            queueNode = this.dequeue();
+
+            if (queueNode != null)
+                System.out.print(", ");
+        }
+
+        System.out.println("}");
     }
 }

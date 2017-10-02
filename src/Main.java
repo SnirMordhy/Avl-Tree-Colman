@@ -12,7 +12,7 @@ public class Main {
         int[] Nums = new int[SIZE];
         AVLTree avt = new AVLTree();
 
-        System.out.print("Numbers -> ");
+       /* System.out.print("Numbers -> ");
 
         for( int i =0; i< SIZE; i++)
         {
@@ -30,7 +30,15 @@ public class Main {
 
         System.out.println(avt.PrintInorder());
         System.out.println(avt.PrintPreorder());
-        System.out.println(avt.PrintPostorder());
+        System.out.println(avt.PrintPostorder());*/
+
+       Node avlNode = new Node(48);
+       avlNode.left = new Node(32);
+       avlNode.right = new Node(71);
+
+       AVLTree tree = new AVLTree();
+
+       tree.PrintTreeLevel(avlNode);
 
     }
 

@@ -150,15 +150,31 @@ public class AVLTree {
         return strPrint;
     }
 
-    public void PrintTreeLevels() {
-        Node currNode = this.treeRoot;
+    public void PrintTreeLevel(Node node) {
+        if (node == null)
+            System.out.println("end of print");
 
+        AvlQueue avlQueue = ConvertNodeToQueueWithSearchFormat(node);
+        avlQueue.PrintAvlQueue();
+        this.PrintTreeLevel(node.left);
+        this.PrintTreeLevel(node.right);
+    }
 
+    private AvlQueue ConvertNodeToQueueWithSearchFormat(Node currNode) {
+        AvlQueue avlQueue = new AvlQueue();
 
-        //    TODO: enqueue : key
-        //    TODO: enqueue : parent
-        //    TODO: enqueue : left
-        //    TODO: enqueue : right
-        //    TODO: dequeue - 4 times
+        this.AddValToAvlQueue(currNode, avlQueue);
+        this.AddValToAvlQueue(currNode.parent, avlQueue);
+        this.AddValToAvlQueue(currNode.left, avlQueue);
+        this.AddValToAvlQueue(currNode.right, avlQueue);
+
+        return avlQueue;
+    }
+
+    private void AddValToAvlQueue(Node node, AvlQueue avlQueue) {
+        if (node == null)
+            avlQueue.enqueue(-1);
+        else
+            avlQueue.enqueue(node.key);
     }
 }
